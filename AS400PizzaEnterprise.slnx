@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AS400PizzaEnterprise.API/AS400PizzaEnterprise.API.csproj" />
+    <Project Path="src/AS400PizzaEnterprise.Application/AS400PizzaEnterprise.Application.csproj" />
+    <Project Path="src/AS400PizzaEnterprise.Domain/AS400PizzaEnterprise.Domain.csproj" />
+    <Project Path="src/AS400PizzaEnterprise.Infrastructure/AS400PizzaEnterprise.Infrastructure.csproj" />
+  </Folder>
+</Solution>
