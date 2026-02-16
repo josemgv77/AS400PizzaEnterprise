@@ -53,7 +53,7 @@ public class Order : BaseEntity
 
     private static string GenerateOrderNumber()
     {
-        return $"ORD-{DateTime.UtcNow:yyyyMMdd}-{Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper()}";
+        return $"ORD-{DateTime.UtcNow:yyyyMMdd}-{Guid.NewGuid().ToString("N")[..8].ToUpper()}";
     }
 
     public void AddItem(Guid pizzaId, string pizzaName, int quantity, Money unitPrice)
