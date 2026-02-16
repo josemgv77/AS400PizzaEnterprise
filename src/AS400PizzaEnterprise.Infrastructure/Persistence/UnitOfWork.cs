@@ -37,10 +37,11 @@ public class UnitOfWork : IUnitOfWork
 
             await DispatchDomainEventsAsync(cancellationToken);
 
-            _logger.LogInformation("Changes saved successfully. {Count} entities tracked", _trackedEntities.Count);
+            var entityCount = _trackedEntities.Count;
+            _logger.LogInformation("Changes saved successfully. {Count} entities tracked", entityCount);
             
             _trackedEntities.Clear();
-            return _trackedEntities.Count;
+            return entityCount;
         }
         catch (Exception ex)
         {

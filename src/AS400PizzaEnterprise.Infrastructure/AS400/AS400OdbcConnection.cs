@@ -184,30 +184,34 @@ public class AS400OdbcConnection : IAS400Connection, IDisposable
         _logger.LogDebug("Transaction started");
     }
 
-    public async Task CommitTransactionAsync()
+    public Task CommitTransactionAsync()
     {
         if (_transaction == null)
         {
             throw new InvalidOperationException("No transaction in progress");
         }
 
-        await Task.Run(() => _transaction.Commit());
+        _transaction.Commit();
         _transaction.Dispose();
         _transaction = null;
         _logger.LogDebug("Transaction committed");
+        
+        return Task.CompletedTask;
     }
 
-    public async Task RollbackTransactionAsync()
+    public Task RollbackTransactionAsync()
     {
         if (_transaction == null)
         {
             throw new InvalidOperationException("No transaction in progress");
         }
 
-        await Task.Run(() => _transaction.Rollback());
+        _transaction.Rollback();
         _transaction.Dispose();
         _transaction = null;
         _logger.LogDebug("Transaction rolled back");
+        
+        return Task.CompletedTask;
     }
 
     private void AddParameters(OdbcCommand command, object parameters)
